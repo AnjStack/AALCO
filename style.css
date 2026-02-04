@@ -77,6 +77,29 @@ html {
 }
 body {
   font-size: clamp(14px, 1.1rem + 0.2vw, 18px);
+  line-height: 1.6;
+}
+
+/* Responsive headings */
+h1 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3vw, 2.5rem);
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: clamp(1.1rem, 2.5vw, 2rem);
+  line-height: 1.4;
+}
+
+p {
+  font-size: clamp(0.875rem, 1rem + 0.2vw, 1.125rem);
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 /* Media elements and links */
@@ -139,18 +162,14 @@ a {
   }
 
   .cards-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 0 15px;
   }
 
   .card {
-    flex: 1 1 240px;
-    max-width: 300px;
-    height: auto;
+    height: 140px;
     padding: 18px;
-    box-sizing: border-box;
   }
 }
 
@@ -214,14 +233,16 @@ a {
     gap: 15px;
     justify-content: center;
     margin-bottom: 40px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    padding: 0 20px;
   }
 
   .btn {
     padding: 14px 25px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    min-width: 180px;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    min-width: 160px;
+    border-radius: 8px;
+    text-align: center;
   }
 
   /* Cards Section */
@@ -334,14 +355,32 @@ a {
   .mobile-menu-toggle {
     display: block;
     position: fixed;
-    right: 15px;
-    top: 70px;
+    right: 20px;
+    top: 80px;
     z-index: 1002;
-    background: rgba(10, 35, 81, 0.9);
-    padding: 8px;
-    border-radius: 5px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(10, 35, 81, 0.95);
+    padding: 12px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-menu-toggle:hover {
+    background: rgba(10, 35, 81, 1);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: scale(1.05);
+  }
+
+  .mobile-menu-toggle:active {
+    transform: scale(0.95);
   }
 
   .nav-menu {
@@ -463,38 +502,40 @@ a {
   }
 
   .main-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
     margin-bottom: 18px;
     line-height: 1.1;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
     margin-bottom: 30px;
     line-height: 1.3;
     padding: 0 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    text-align: center;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .buttons {
-    flex-direction: row;
+    flex-direction: column;
     gap: 12px;
     align-items: center;
     padding: 0 20px;
-    flex-wrap: nowrap;
-    justify-content: center;
   }
 
   .btn {
-    width: 180px;
+    width: 100%;
+    max-width: 280px;
     padding: 12px 20px;
-    font-size: 0.85rem;
+    font-size: clamp(0.8rem, 2.5vw, 0.85rem);
     border-radius: 8px;
-    white-space: nowrap;
     text-align: center;
+    min-height: 44px;
   }
 
   /* Cards Section */
@@ -522,22 +563,14 @@ a {
   }
 
   .cards-wrapper {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
-    padding: 0 10px;
-    overflow-x: auto;
-    justify-content: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 0 12px;
   }
 
   .card {
-    width: 120px;
-    max-width: 120px;
-    height: 75px;
-    padding: 8px;
-    margin: 0;
-    flex-shrink: 0;
+    height: 120px;
+    padding: 15px;
   }
 
   .card h3 {
@@ -803,34 +836,34 @@ a {
 
   /* Banner - Hero Section */
   .banner {
-    height: 320px;
-    border-bottom-left-radius: 3% 2%;
-    border-bottom-right-radius: 3% 2%;
+    height: 500px;
+    min-height: 400px;
+    border-bottom-left-radius: 10% 5%;
+    border-bottom-right-radius: 10% 5%;
   }
 
   .banner::before,
   .banner::after,
   .shadow-right {
-    border-bottom-left-radius: 3% 2%;
-    border-bottom-right-radius: 3% 2%;
+    border-bottom-left-radius: 30% 20%;
+    border-bottom-right-radius: 30% 20%;
   }
 
   .main-title {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin-bottom: 20px;
     line-height: 1.1;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: center;
   }
 
   .subtitle {
-    font-size: 0.9rem;
-    max-width: 95%;
-    margin-bottom: 25px;
-    padding: 0 10px;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    max-width: 90%;
+    margin: 0 auto 35px;
     line-height: 1.3;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    text-align: center;
   }
 
   .buttons {
@@ -875,21 +908,14 @@ a {
   }
 
   .cards-wrapper {
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 30px;
-    padding: 0 8px;
-    overflow-x: auto;
-    justify-content: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 0 10px;
   }
 
   .card {
-    width: 100px;
-    max-width: 100px;
-    height: 65px;
-    padding: 6px;
-    flex-shrink: 0;
+    height: 100px;
+    padding: 12px;
   }
 
   .card h3 {
@@ -1018,20 +1044,23 @@ a {
   }
 
   .main-title {
-    font-size: 1.6rem;
+    font-size: clamp(1.4rem, 8vw, 1.6rem);
     line-height: 1.1;
-    white-space: nowrap;
+    white-space: normal;
     margin-bottom: 12px;
+    text-align: center;
   }
 
   .subtitle {
-    font-size: 0.8rem;
+    font-size: clamp(0.75rem, 4vw, 0.8rem);
     line-height: 1.2;
     padding: 0 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
     margin-bottom: 20px;
+    text-align: center;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #box {
@@ -1056,12 +1085,15 @@ a {
     text-align: center;
   }
 
+  .cards-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    padding: 0 8px;
+  }
+
   .card {
-    width: 90px;
-    max-width: 90px;
-    height: 60px;
-    padding: 4px;
-    flex-shrink: 0;
+    height: 90px;
+    padding: 10px;
   }
 
   .card h3 {
@@ -1095,50 +1127,64 @@ a {
 .mobile-menu-toggle {
   display: none;
   cursor: pointer;
-  width: 30px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
   position: relative;
   z-index: 1001;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  transform: scale(1.05);
+}
+
+.mobile-menu-toggle:active {
+  transform: scale(0.95);
 }
 
 .mobile-menu-toggle span {
   display: block;
   position: absolute;
-  height: 3px;
-  width: 100%;
+  height: 4px;
+  width: 28px;
   background: #ffd700;
-  border-radius: 3px;
+  border-radius: 4px;
   opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
+  left: 50%;
+  transform: translateX(-50%);
   transition: all 0.3s ease-in-out;
 }
 
 .mobile-menu-toggle span:nth-child(1) {
-  top: 0px;
+  top: 12px;
 }
 
 .mobile-menu-toggle span:nth-child(2) {
-  top: 8px;
+  top: 20px;
 }
 
 .mobile-menu-toggle span:nth-child(3) {
-  top: 16px;
+  top: 28px;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
-  top: 8px;
-  transform: rotate(135deg);
+  top: 20px;
+  transform: translateX(-50%) rotate(135deg);
 }
 
 .mobile-menu-toggle.active span:nth-child(2) {
   opacity: 0;
-  left: -60px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .mobile-menu-toggle.active span:nth-child(3) {
-  top: 8px;
-  transform: rotate(-135deg);
+  top: 20px;
+  transform: translateX(-50%) rotate(-135deg);
 }
 
 .nav-menu {
@@ -1328,24 +1374,25 @@ header {
   text-align: center;
 }
 
+/* Logo responsive typography */
 .logo h1 {
-  font-size: 42px;
+  font-size: clamp(2rem, 5vw, 4.2rem);
   margin: 0;
   font-weight: bold;
   font-family: Arial, sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: clamp(1px, 0.2vw, 2px);
+}
+
+.logo p {
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  margin: 8px 0 0 0;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  letter-spacing: clamp(0.5px, 0.1vw, 1px);
 }
 
 .logo h1 span {
   color: #ffd700;
-}
-
-.logo p {
-  font-size: 16px;
-  margin: 8px 0 0 0;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  letter-spacing: 1px;
 }
 
 .bottom-nav {
@@ -1555,19 +1602,21 @@ header {
 }
 
 .cards-wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
   margin-bottom: 50px;
-  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-items: stretch;
+  padding: 0 20px;
 }
 
 .card {
   background-color: #1a3a7a;
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
-  width: 300px;
+  width: 100%;
   height: 150px;
   display: flex;
   flex-direction: column;
@@ -1576,6 +1625,7 @@ header {
   text-align: center;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 215, 0, 0.3);
+  min-height: 150px;
 }
 
 .card:hover {
@@ -2790,6 +2840,10 @@ header {
     top: 0;
     gap: 20px;
   }
+
+  .card {
+    min-height: 200px;
+  }
 }
 
 /* Mobile Responsive */
@@ -2802,7 +2856,7 @@ header {
   }
 
   .section-heading {
-    font-size: 24px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: 20px;
     text-align: center;
   }
@@ -2818,30 +2872,26 @@ header {
   }
 
   .ribbon {
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 2.5vw, 0.9rem);
     padding: 12px;
     text-align: center;
   }
 
   .card-actions {
     bottom: 15px;
-    left: 20px;
-    right: 20px;
-    display: flex;
-    height: 40px;
-    z-index: 2;
+    left: 15px;
+    right: 15px;
   }
 
-  .card-actions button {
-    padding: 8px 14px;
-    font-size: 13px;
+  .card-actions a {
+    padding: 10px 12px;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
     font-weight: 600;
-    border-radius: 0;
-    flex: 1;
+    border-radius: 6px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
   }
 
   .voices {
@@ -2851,12 +2901,12 @@ header {
   }
 
   .voices h3 {
-    font-size: 1.1rem;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
     margin-bottom: 15px;
   }
 
   .voices p {
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     line-height: 1.4;
   }
 
@@ -2865,12 +2915,12 @@ header {
   }
 
   .events h3 {
-    font-size: 1.1rem;
+    font-size: clamp(1.1rem, 3vw, 1.2rem);
     text-align: center;
   }
 
   .events li {
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     padding: 10px 0;
     text-align: center;
   }
@@ -2882,8 +2932,12 @@ header {
   .calendar-btn a {
     width: 100%;
     padding: 12px;
-    font-size: 0.9rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     border-radius: 8px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -3522,24 +3576,27 @@ footer {
     display: flex;
     visibility: visible;
     width: 100%;
+    max-width: 100%;
   }
 
   .footer-nav ul {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
     align-items: center;
+    max-width: 100%;
   }
 
   .footer-nav a {
-    font-size: 14px;
-    padding: 6px 12px;
+    font-size: clamp(0.875rem, 2vw, 0.9rem);
+    padding: 8px 12px;
     border-radius: 15px;
     background-color: rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
     display: inline-block;
-    min-width: 120px;
+    min-width: auto;
+    white-space: nowrap;
   }
 
   .footer-nav a:hover {
@@ -3549,12 +3606,13 @@ footer {
 
   .footer-social-links {
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .footer-social-links .social-icon {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     font-size: 14px;
     background-color: rgba(255, 255, 255, 0.15);
   }
@@ -3575,26 +3633,31 @@ footer {
 
   .footer-content {
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
     padding: 0 15px;
     text-align: center;
     min-height: auto;
     display: flex;
     visibility: visible;
     width: 100%;
+    max-width: 100%;
   }
 
   .footer-nav ul {
-    gap: 15px;
+    gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 
   .footer-nav a {
-    font-size: 13px;
-    padding: 5px 10px;
+    font-size: clamp(0.8rem, 2.2vw, 0.85rem);
+    padding: 6px 10px;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    border-radius: 12px;
     transition: all 0.3s ease;
+    min-width: auto;
+    white-space: nowrap;
   }
 
   .footer-nav a:hover {
@@ -3603,14 +3666,15 @@ footer {
   }
 
   .footer-social-links {
-    gap: 15px;
+    gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .footer-social-links .social-icon {
-    width: 35px;
-    height: 35px;
-    font-size: 14px;
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
   }
 }
 
@@ -3629,26 +3693,31 @@ footer {
 
   .footer-content {
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
     padding: 0 12px;
     text-align: center;
     min-height: auto;
     display: flex;
     visibility: visible;
     width: 100%;
+    max-width: 100%;
   }
 
   .footer-nav ul {
-    gap: 12px;
+    gap: 8px;
     justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 
   .footer-nav a {
-    font-size: 12px;
+    font-size: clamp(0.75rem, 2.5vw, 0.8rem);
     padding: 4px 8px;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    border-radius: 10px;
     transition: all 0.3s ease;
+    min-width: auto;
+    white-space: nowrap;
   }
 
   .footer-nav a:hover {
@@ -3657,14 +3726,15 @@ footer {
   }
 
   .footer-social-links {
-    gap: 12px;
+    gap: 8px;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .footer-social-links .social-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 13px;
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
   }
 }
 
@@ -3683,26 +3753,31 @@ footer {
 
   .footer-content {
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
     padding: 0 10px;
     text-align: center;
     min-height: auto;
     display: flex;
     visibility: visible;
     width: 100%;
+    max-width: 100%;
   }
 
   .footer-nav ul {
-    gap: 8px;
+    gap: 6px;
     justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 
   .footer-nav a {
-    font-size: 11px;
+    font-size: clamp(0.7rem, 3vw, 0.75rem);
     padding: 3px 6px;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 8px;
     transition: all 0.3s ease;
+    min-width: auto;
+    white-space: nowrap;
   }
 
   .footer-nav a:hover {
@@ -3711,14 +3786,15 @@ footer {
   }
 
   .footer-social-links {
-    gap: 10px;
+    gap: 6px;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .footer-social-links .social-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
   }
 }
 
@@ -3726,28 +3802,28 @@ footer {
    ENHANCED TOUCH INTERACTIONS
    ============================================ */
 .btn,
-.card-actions button,
-.calendar-btn button,
-.vision-note-button {
+.card-actions a,
+.calendar-btn a,
+.vision-note-button,
+.nav-link,
+.footer-nav a,
+.social-icon {
   -webkit-tap-highlight-color: rgba(255, 215, 0, 0.3);
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
+  transition: all 0.3s ease;
 }
 
 .btn:active,
-.card-actions button:active,
-.calendar-btn button:active,
-.vision-note-button:active {
+.card-actions a:active,
+.calendar-btn a:active,
+.vision-note-button:active,
+.nav-link:active,
+.footer-nav a:active,
+.social-icon:active {
   transform: scale(0.98);
   transition: transform 0.1s ease;
-}
-
-.nav-link,
-.footer-nav a,
-.social-icon {
-  -webkit-tap-highlight-color: rgba(255, 215, 0, 0.2);
-  touch-action: manipulation;
 }
 
 /* Better spacing for touch targets */
@@ -3755,19 +3831,34 @@ footer {
   .btn {
     min-height: 44px;
     min-width: 44px;
+    padding: 12px 20px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
   }
 
-  .card-actions button {
-    min-height: 40px;
-    min-width: 40px;
-    padding: 8px 14px;
-    font-size: 13px;
+  .card-actions a {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 14px;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     font-weight: 600;
+  }
+
+  .vision-note-button {
+    min-height: 44px;
+    padding: 12px 24px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
+
+  .calendar-btn a {
+    min-height: 44px;
+    padding: 12px 20px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
   }
 
   .social-icon {
     min-height: 44px;
     min-width: 44px;
+    font-size: 16px;
   }
 
   .footer-nav a {
@@ -3775,6 +3866,14 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 8px 16px;
+  }
+
+  .nav-link {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
   }
 }
 @media (max-width: 768px) {
@@ -4171,7 +4270,186 @@ footer {
   }
 }
 
-/* Mobile tweaks: ensure beautiful stacking on small devices */
+/* ============================================
+   ULTRA-WIDE SCREENS (1400px and above)
+   ============================================ */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 40px;
+  }
+
+  .logo h1 {
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+  }
+
+  .main-title {
+    font-size: clamp(4rem, 7vw, 6rem);
+  }
+
+  .subtitle {
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    max-width: 1000px;
+  }
+
+  .cards-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 0 40px;
+  }
+
+  .card {
+    height: 180px;
+    padding: 25px;
+  }
+
+  .anniversary {
+    max-width: 1800px;
+    padding: 40px;
+  }
+
+  .footer-content {
+    max-width: 1600px;
+    padding: 0 40px;
+  }
+}
+
+/* ============================================
+   VERY SMALL DEVICES (280px and below)
+   ============================================ */
+@media (max-width: 280px) {
+  .container {
+    padding: 0 6px;
+  }
+
+  .logo h1 {
+    font-size: clamp(1.2rem, 8vw, 1.8rem);
+  }
+
+  .logo p {
+    font-size: clamp(0.6rem, 3vw, 0.9rem);
+  }
+
+  .main-title {
+    font-size: clamp(1.2rem, 10vw, 1.6rem);
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-size: clamp(0.65rem, 4vw, 0.75rem);
+    line-height: 1.2;
+    padding: 0 6px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .btn {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+    font-size: clamp(0.7rem, 3vw, 0.75rem);
+    min-height: 40px;
+  }
+
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 0 6px;
+  }
+
+  .card {
+    height: 80px;
+    padding: 8px;
+  }
+
+  .card h3 {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+
+  .card p {
+    font-size: clamp(0.65rem, 3vw, 0.75rem);
+  }
+
+  .footer-content {
+    padding: 0 8px;
+    gap: 12px;
+  }
+
+  .footer-nav ul {
+    gap: 4px;
+  }
+
+  .footer-nav a {
+    font-size: clamp(0.6rem, 3.5vw, 0.7rem);
+    padding: 2px 4px;
+  }
+
+  .footer-social-links .social-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+
+  .mobile-menu-toggle {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+
+  .mobile-menu-toggle span {
+    width: 24px;
+    height: 3px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCES
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .social-icon:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================ */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid #ffd700;
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+  }
+
+  .nav-link:hover,
+  .footer-nav a:hover {
+    outline: 2px solid #ffd700;
+    outline-offset: 2px;
+  }
+}
 @media (max-width: 480px) {
   .logo h1 {
     font-size: 24px;
