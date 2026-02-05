@@ -65,7 +65,8 @@
         <div class="banner-content">
           <h1 class="main-title">AALCO@70</h1>
           <h2 class="subtitle">
-            From Seven Decades  <i>of</i> Legacy  <i>to</i> <br> <i>the</i> Future <i>of</i> International Law
+            From Seven Decades <i>of</i> Legacy <i>to</i> <br />
+            <i>the</i> Future <i>of</i> International Law
           </h2>
           <div class="buttons">
             <a href="#" class="btn btn-primary">
@@ -105,7 +106,7 @@
             </div>
 
             <!-- Updated Card 3 -->
-            <div class="card"  id="glance-card">
+            <div class="card" id="glance-card">
               <div class="main">Regional Arbitration</div>
               <div class="middle">
                 <div class="line"></div>
@@ -124,43 +125,47 @@
           <a href="#" class="vision-note-button">
             Read the AALCO@70 Vision Note
           </a>
-        </div>
-      </section>
+          <div class="legacy-future-content">
+            <div class="top-line"></div>
+            <div class="v-notch"></div>
 
-      <!-- About AALCO Section -->
-      <section class="legacy-future">
-        <div class="top-line"></div>
-        <div class="v-notch"></div>
-        
-        <div class="content">
-          <div class="divider"></div>
-          
-          <div class="column">
-            <div class="heading-row">
-              <div class="blue-line"></div>
-              <h2>Our <span class="u-blue"><h2>Legacy</h2></span> <span>1956–2025</span></h2>
-              <div class="blue-line"></div>
+            <div class="content">
+              <div class="divider"></div>
+
+              <div class="column">
+                <div class="heading-row">
+                  <div class="blue-line"></div>
+                  <h2>
+                    Our <span class="u-blue"><h2>Legacy</h2></span>
+                    <span>1956–2025</span>
+                  </h2>
+                  <div class="blue-line"></div>
+                </div>
+
+                <ul>
+                  <li>Codification & Development</li>
+                  <li>Dispute Settlement Support</li>
+                  <li>Capacity-Building</li>
+                </ul>
+              </div>
+
+              <div class="column">
+                <div class="heading-row">
+                  <div class="blue-line"></div>
+                  <h2>
+                    Our <span class="u-yellow"><h2>Future</h2></span>
+                    <span>2026 & Beyond</span>
+                  </h2>
+                  <div class="blue-line"></div>
+                </div>
+
+                <ul>
+                  <li>Climate & Sustainability</li>
+                  <li>Cyberspace & AI</li>
+                  <li>Investment & Trade</li>
+                </ul>
+              </div>
             </div>
-            
-            <ul>
-              <li>Codification & Development</li>
-              <li>Dispute Settlement Support</li>
-              <li>Capacity-Building</li>
-            </ul>
-          </div>
-          
-          <div class="column">
-            <div class="heading-row">
-              <div class="blue-line"></div>
-              <h2>Our <span class="u-yellow"><h2>Future</h2></span> <span>2026 & Beyond</span></h2>
-              <div class="blue-line"></div>
-            </div>
-            
-            <ul>
-              <li>Climate & Sustainability</li>
-              <li>Cyberspace & AI</li>
-              <li>Investment & Trade</li>
-            </ul>
           </div>
         </div>
       </section>
@@ -249,7 +254,7 @@
     </footer>
 
     <script>
-      // Mobile Navigation Toggle with Enhanced Animations
+      // Mobile Navigation Toggle
       const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
       const navMenu = document.querySelector(".nav-menu");
       const body = document.body;
@@ -258,7 +263,6 @@
         mobileMenuToggle.classList.toggle("active");
         navMenu.classList.toggle("active");
 
-        // Prevent body scroll when menu is open
         if (navMenu.classList.contains("active")) {
           body.style.overflow = "hidden";
         } else {
@@ -266,7 +270,6 @@
         }
       });
 
-      // Close mobile menu when clicking on a link
       document.querySelectorAll(".nav-menu a").forEach((link) => {
         link.addEventListener("click", () => {
           mobileMenuToggle.classList.remove("active");
@@ -275,7 +278,6 @@
         });
       });
 
-      // Close mobile menu when clicking outside
       document.addEventListener("click", (e) => {
         if (
           !mobileMenuToggle.contains(e.target) &&
@@ -287,7 +289,6 @@
         }
       });
 
-      // Close mobile menu on escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && navMenu.classList.contains("active")) {
           mobileMenuToggle.classList.remove("active");
@@ -296,7 +297,6 @@
         }
       });
 
-      // Add smooth scroll behavior
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -310,40 +310,36 @@
         });
       });
 
-      // Scroll Animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+      // ============================================================
+      // HERO SECTION SCROLL ANIMATION
+      // ============================================================
+      window.addEventListener("scroll", () => {
+        const scrollPos = window.scrollY;
+        const banner = document.querySelector(".banner");
+        const mainTitle = document.querySelector(".main-title");
+        const subtitle = document.querySelector(".subtitle");
+        const buttons = document.querySelector(".buttons");
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
-          }
-        });
-      }, observerOptions);
+        if (banner && mainTitle && subtitle && buttons) {
+          // Calculate scroll progress (0 to 1)
+          const bannerHeight = banner.offsetHeight;
+          const scrollProgress = Math.min(scrollPos / (bannerHeight * 0.6), 1);
 
-      // Elements to animate on scroll
-      const animateElements = document.querySelectorAll(
-        ".card, .about-section, .anniversary, .years-at-a-glance h2, .vision-note-button"
-      );
-      animateElements.forEach((el) => {
-        el.classList.add("scroll-animate");
-        observer.observe(el);
+          // Fade out effect (0 to -1 opacity, 0 to -50px translateY)
+          const opacity = Math.max(1 - scrollProgress, 0);
+          const translateY = scrollProgress * -50;
+
+          mainTitle.style.opacity = opacity;
+          mainTitle.style.transform = `translateY(${translateY}px)`;
+
+          subtitle.style.opacity = opacity;
+          subtitle.style.transform = `translateY(${translateY * 0.8}px)`;
+
+          buttons.style.opacity = opacity;
+          buttons.style.transform = `translateY(${translateY * 0.6}px)`;
+        }
       });
 
-      // Parallax effect for banner - REMOVED
-      // Text no longer disappears on scroll
-
-      // Stagger animation for cards
-      document
-        .querySelectorAll(".cards-wrapper .card")
-        .forEach((card, index) => {
-          card.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-      // Animate elements on page load
       window.addEventListener("load", () => {
         document.body.classList.add("loaded");
       });
